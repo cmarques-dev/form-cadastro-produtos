@@ -111,3 +111,7 @@ ul#lista-produtos li {
   border-radius: 4px;
   font-size: 14px;
 }
+
+p#contador-produtos {
+  font-size: 14px;
+}

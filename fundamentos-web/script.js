@@ -15,6 +15,12 @@ function renderizarProdutos() {
   });
 }
 
+function atualizarContador() {
+  const contadorProdutos = document.querySelector("#contador-produtos");
+
+  contadorProdutos.textContent = `Produtos cadastrados: ${produtos.length}`;
+}
+
 form_CriarProduto.addEventListener("submit", function (evento) {
   evento.preventDefault();
 
@@ -22,10 +28,17 @@ form_CriarProduto.addEventListener("submit", function (evento) {
   const preco = Number(document.querySelector("#preco").value);
   const quantidade = Number(document.querySelector("#quantidade").value);
 
+  if (quantidade <= 0) {
+    alert("A quantidade deve ser maior que 0.");
+    return;
+  }
+
   produtos.push({id: contador, nome: nome, preco: preco, quantidade: quantidade});
   contador ++;
 
+  atualizarContador();
   renderizarProdutos();
+
   form_CriarProduto.reset();
 });
 
@@ -76,6 +89,9 @@ botao_Remover.addEventListener("click", function () {
   });
 
   renderizarProdutos();
+  atualizarContador();
+
   form_ModificarProduto.reset();
 });
+
 
